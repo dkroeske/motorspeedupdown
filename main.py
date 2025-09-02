@@ -4,9 +4,6 @@ up = True
 def on_forever():
     global speed
     while True:
-        # kitronik_motor_driver.motor_on(kitronik_motor_driver.Motors.MOTOR1,
-        #     kitronik_motor_driver.MotorDirection.FORWARD,
-        #     speed)
         pins.analog_write_pin(AnalogPin.P8, speed*4)
         if up2:
             if speed < 100:
@@ -21,5 +18,6 @@ def on_forever():
 
 pins.analog_write_pin(AnalogPin.P8, 0)
 pins.analog_set_period(AnalogPin.P8, 20000)
+pins.digital_write_pin(DigitalPin.P12, 0)
 
 basic.forever(on_forever)
